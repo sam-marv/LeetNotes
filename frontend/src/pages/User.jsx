@@ -1,11 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import CurrentUserContext from '../contexts/current-user-context';
 import { getUser } from '../adapters/user-adapter';
-import { logUserOut } from '../adapters/auth-adapter';
 import UpdateUsernameForm from '../components/UpdateUsernameForm';
 import Editor from '../components/Editor';
-import SideBar from '../components/SideBar';
 
 export default function UserPage() {
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
@@ -13,7 +11,6 @@ export default function UserPage() {
   const [errorText, setErrorText] = useState(null);
   const [isEditorInitialized, setIsEditorInitialized] = useState(false);
   const [isNeedRerender, setIsNeedRerendered] = useState(false);
-
 
   const handleEditorButtonClick = () => {
     if (!isEditorInitialized) {
@@ -45,23 +42,26 @@ export default function UserPage() {
     ? currentUser.username
     : userProfile.username;
 
-  return <>
-    <h1>{profileUsername}</h1>
-    { !!isCurrentUserProfile && <button onClick={handleLogout}>Log Out</button> }
-    <p>If the user had any data, here it would be</p>
-    <p>Fake Bio or something</p>
-    <p>yeh</p>
-    <p>Thats that</p>
+  return (
+    <>
+      <h1>{profileUsername}</h1>
+      <p>If the user had any data, here it would be</p>
+      <p>Fake Bio or something</p>
+      <p>yeh</p>
+      <p>Thats that</p>
 
-          <button onClick={handleEditorButtonClick}>
+      <button onClick={handleEditorButtonClick}>
         {true ? 'init editor' : 'Show Editor'}
       </button>
 
-      
-      {isEditorInitialized &&  <Editor />}
-    {
-      !!isCurrentUserProfile
-        && <UpdateUsernameForm currentUser={currentUser} setCurrentUser={setCurrentUser}/>
-    }
-  </>;
+      {isEditorInitialized && <Editor />}
+
+      {/* {!!isCurrentUserProfile && (
+        <UpdateUsernameForm
+          currentUser={currentUser}
+          setCurrentUser={setCurrentUser}
+        />
+      )} */}
+    </>
+  );
 }
