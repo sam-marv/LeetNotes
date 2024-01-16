@@ -43,7 +43,7 @@ export default function UserPage() {
     : userProfile.username;
 
   return (
-    <SideBar name={profileUsername}>
+    <>
       <h1>{profileUsername}</h1>
       {!!isCurrentUserProfile && (
         <button onClick={handleLogout}>Log Out</button>
@@ -59,6 +59,6 @@ export default function UserPage() {
           setCurrentUser={setCurrentUser}
         />
       )}
-    </SideBar>
+    </>
   );
 }
