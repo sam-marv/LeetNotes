@@ -3,7 +3,7 @@
  * @returns { Promise<void> }
  */
 exports.up = (knex) => knex.schema.createTable('leetcodes', (table) => {
-    table.integer("leetcode_id").notNullable();
+    table.integer("leetcode_id").primary().unique()
     table.string('title').notNullable().unique();
     table.string('difficulty').notNullable();
     table.decimal('acrate', 4, 2).notNullable()
