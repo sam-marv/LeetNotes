@@ -1,0 +1,42 @@
+.header {
+  text-align: center;
+}
+
+.container {
+  margin: 0 auto;
+}
+
+.container ul {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.container ul li {
+  list-style: none;
+  padding: 10px;
+  border: 1px solid rgb(236, 232, 232);
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Easy {
+  color: green;
+}
+
+.Medium {
+  color: #fff236;
+}
+
+.Hard {
+  color: Red;
+}
+
+.grey {
+  background-color: rgb(236, 232, 232);
+}
+
+.dark {
+  background-color: rgb(192, 188, 188);
+}

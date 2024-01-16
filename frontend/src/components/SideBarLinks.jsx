@@ -52,7 +52,7 @@ export default function SidebarLinks() {
         </>
       ) : (
         <List>
-          {['Log In', 'Sign In'].map((text, index) => (
+          {['Log In', 'Sign Up'].map((text, index) => (
             <NavLink to={index % 2 === 0 ? '/login' : '/sign-up'} key={text}>
               <ListItem key={text}>
                 <ListItemButton>

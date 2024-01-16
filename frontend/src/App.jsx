@@ -1,6 +1,5 @@
 import { useContext, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
 import SignUpPage from './pages/SignUp';
 import LoginPage from './pages/Login';
 import NotFoundPage from './pages/NotFound';
@@ -9,6 +8,7 @@ import { checkForLoggedInUser } from './adapters/auth-adapter';
 import UsersPage from './pages/Users';
 import UserPage from './pages/User';
 import SideBar from './components/SideBar';
+import LeetCodes from './pages/LeetCodes';
 
 export default function App() {
   const { setCurrentUser } = useContext(UserContext);
@@ -20,7 +20,7 @@ export default function App() {
     <SideBar>
       <main>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<LeetCodes />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/sign-up" element={<SignUpPage />} />
           <Route path="/users" element={<UsersPage />} />
