@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import CurrentUserContext from '../contexts/current-user-context';
 import { getUser } from '../adapters/user-adapter';
-import { getAllPages } from '../adapters/page-adapter';
+import { getAllPages, getAPage } from '../adapters/page-adapter';
 import UpdateUsernameForm from '../components/UpdateUsernameForm';
 import Editor from '../components/Editor';
 import PrevEditor from '../components/PrevEditor';
@@ -14,6 +14,8 @@ export default function UserPage() {
   const [isEditorInitialized, setIsEditorInitialized] = useState(false);
   const [isNeedRerender, setIsNeedRerendered] = useState(false);
   const [prevNotes, setPrevNotes] = useState([])
+  const [selectedNote, setSelectedNote] = useState(null);
+ 
  
 
   const handleEditorButtonClick = () => {
@@ -21,6 +23,12 @@ export default function UserPage() {
       setIsEditorInitialized(true);
     }
     // setIsEditorVisible(!isEditorVisible);
+  };
+
+  const handleNoteButtonClick =  async (id) => {
+    let page = await getAPage(id)
+    setSelectedNote(page[0]);
+    console.log(page)
   };
 
   const { id } = useParams();
@@ -46,6 +54,7 @@ export default function UserPage() {
 
   }, []);
 
+
   
 
   if (!userProfile && !errorText) return null;
@@ -57,6 +66,7 @@ export default function UserPage() {
   const profileUsername = isCurrentUserProfile
     ? currentUser.username
     : userProfile.username;
+
 
   return (
     <>
@@ -70,13 +80,27 @@ export default function UserPage() {
         {true ? 'init editor' : 'Show Editor'}
       </button>
 
-
+ 
       {isEditorInitialized && <Editor />}
 
-      {prevNotes.map((note)=> {
-         return (<button style={{display : "block", marginTop : "10px"}}>{note.title}</button> )
+      {prevNotes.map((note) => (
+        <button
+          key={note.page_id}
+          style={{ display: 'block', marginTop: '10px' }}
+          onClick={() => handleNoteButtonClick(note.page_id)}
+        >
+          {note.title + note.page_id}
+        </button>
+      ))}
+
+      {selectedNote && (
+        <PrevEditor id={selectedNote.page_id} data={selectedNote} userid={id} />
+      )}
+
+      {/* {prevNotes.map((note)=> {
+         return (<button key= {note.page_id} style={{display : "block", marginTop : "10px"}}>{note.title + note.page_id}</button> )
       })}
-       { prevNotes.length > 0 && <PrevEditor id = { prevNotes[0].page_id} data = {  prevNotes[0] } userid = { id} />}
+       { prevNotes.length > 0 && <PrevEditor id = { prevNotes[0].page_id} data = {  prevNotes[0] } userid = { id} />} */}
       {/* {!!isCurrentUserProfile && (
         <UpdateUsernameForm
           currentUser={currentUser}
