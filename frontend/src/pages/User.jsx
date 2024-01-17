@@ -32,6 +32,8 @@ export default function UserPage() {
     loadUser();
   }, [id]);
 
+  
+
   if (!userProfile && !errorText) return null;
   if (errorText) return <p>{errorText}</p>;
 
