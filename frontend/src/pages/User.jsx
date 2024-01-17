@@ -5,6 +5,7 @@ import { getUser } from '../adapters/user-adapter';
 import { getAllPages } from '../adapters/page-adapter';
 import UpdateUsernameForm from '../components/UpdateUsernameForm';
 import Editor from '../components/Editor';
+import PrevEditor from '../components/PrevEditor';
 
 export default function UserPage() {
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
@@ -13,6 +14,7 @@ export default function UserPage() {
   const [isEditorInitialized, setIsEditorInitialized] = useState(false);
   const [isNeedRerender, setIsNeedRerendered] = useState(false);
   const [prevNotes, setPrevNotes] = useState([])
+ 
 
   const handleEditorButtonClick = () => {
     if (!isEditorInitialized) {
@@ -68,8 +70,13 @@ export default function UserPage() {
         {true ? 'init editor' : 'Show Editor'}
       </button>
 
+
       {isEditorInitialized && <Editor />}
 
+      {prevNotes.map((note)=> {
+         return (<button style={{display : "block", marginTop : "10px"}}>{note.title}</button> )
+      })}
+       { prevNotes.length > 0 && <PrevEditor id = { prevNotes[0].page_id} data = {  prevNotes[0] } userid = { id} />}
       {/* {!!isCurrentUserProfile && (
         <UpdateUsernameForm
           currentUser={currentUser}
