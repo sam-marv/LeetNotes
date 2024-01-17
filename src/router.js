@@ -24,6 +24,7 @@ Router.get('/me', userController.showMe);
 // Router.get('users/pages/:userid', pageController.list);
 Router.post('/pages', pageController.create);
 Router.patch("/pages", pageController.update);
+Router.get('/pages/:pageid', pageController.getPage);
 
 // Tags routes
 Router.get('/tags', tagController.list);

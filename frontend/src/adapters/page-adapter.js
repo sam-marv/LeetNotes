@@ -7,8 +7,12 @@ export const getAllPages = async (id) => {
   const [pages] = await fetchHandler(`${baseUrl}${id}/pages`);
   return pages || [];
 };
-
+export const getAPage = async (id) => {
+  const [pages] = await fetchHandler(`/api/pages/${id}`);
+  return pages || [];
+}
 export const savePage = async (content, pageId, userId) => {
+  console.log( "page id: + " + pageId, "user id: +" + userId)
   try {
     const response = await fetch(`http://localhost:3000/api/pages`, {
       method: 'PATCH',
