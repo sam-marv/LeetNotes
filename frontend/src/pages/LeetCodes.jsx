@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getLeetcodes } from "../adapters/leetcode-adapter";
+import { getLeetcodes } from '../adapters/leetcode-adapter';
 import Paginations from '../components/Paginations';
 import SearchBar from '../components/SearchBar';
 import './styles/leetcodes.css';
@@ -8,17 +8,20 @@ export default function LeetCodes() {
   const [page, setPage] = useState(6);
   const [prev, setPrev] = useState(0);
   const [idx, setIdx] = useState(0);
-  const [query, setQuery] = useState({offset : 0, difficulty : null, tag : null})
-  const [allLeetcodes, setAllLeetcodes] = useState([])
+  const [query, setQuery] = useState({
+    offset: 0,
+    difficulty: null,
+    tag: null,
+  });
+  const [allLeetcodes, setAllLeetcodes] = useState([]);
   useEffect(() => {
     const setCodes = async () => {
-      let bar =  await getLeetcodes({offset : 0, difficulty : null, tag : null});
-      setAllLeetcodes(bar)
-      console.log(bar)
-    }
-    setCodes()
+      let bar = await getLeetcodes({ offset: 0, difficulty: null, tag: null });
+      setAllLeetcodes(bar);
+      console.log(bar);
+    };
+    setCodes();
   }, []);
-  
 
   const arr = [
     {
