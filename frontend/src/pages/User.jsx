@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import CurrentUserContext from '../contexts/current-user-context';
 import { getUser } from '../adapters/user-adapter';
+import { getAllPages } from '../adapters/page-adapter';
 import UpdateUsernameForm from '../components/UpdateUsernameForm';
 import Editor from '../components/Editor';
 
@@ -11,6 +12,7 @@ export default function UserPage() {
   const [errorText, setErrorText] = useState(null);
   const [isEditorInitialized, setIsEditorInitialized] = useState(false);
   const [isNeedRerender, setIsNeedRerendered] = useState(false);
+  const [prevNotes, setPrevNotes] = useState([])
 
   const handleEditorButtonClick = () => {
     if (!isEditorInitialized) {
@@ -31,6 +33,16 @@ export default function UserPage() {
 
     loadUser();
   }, [id]);
+
+  useEffect(() => {
+    const setNotes = async () => {
+      const bar = await getAllPages(id);
+      setPrevNotes(bar);
+      console.log(bar)
+    }
+    setNotes()
+
+  }, []);
 
   
 

@@ -1,9 +1,10 @@
 import { fetchHandler, getPostOptions, getPatchOptions } from '../utils';
 
-const baseUrl = '/api/pages';
+const baseUrl = '/api/users/';
 
-export const getAllPages = async () => {
-  const [pages] = await fetchHandler(baseUrl);
+export const getAllPages = async (id) => {
+  console.log(`${baseUrl}${id}/pages`)
+  const [pages] = await fetchHandler(`${baseUrl}${id}/pages`);
   return pages || [];
 };
 

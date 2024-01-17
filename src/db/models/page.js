@@ -1,9 +1,10 @@
 const knex = require('../knex');
 
 class Page {
-  static async list() {
-    const query = 'SELECT * FROM pages';
-    const { rows } = await knex.raw(query);
+  static async list(userid) {
+    const query = 'SELECT * FROM pages WHERE user_id = ? LIMIT 5';
+    const args = [userid]
+    const { rows } = await knex.raw(query, args);
     return rows || [];
   }
   static async testlist() {

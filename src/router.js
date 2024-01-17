@@ -12,14 +12,16 @@ Router.use(addModelsToRequest);
 
 Router.get('/users', userController.list);
 Router.post('/users', userController.create);
+Router.get('/users/:id/pages', pageController.list);
 Router.get('/users/:id', userController.show);
+
 
 Router.post('/login', userController.login);
 Router.delete('/logout', userController.logout);
 Router.get('/me', userController.showMe);
 
 // Pages Routes
-Router.get('/pages', pageController.list);
+// Router.get('users/pages/:userid', pageController.list);
 Router.post('/pages', pageController.create);
 Router.patch("/pages", pageController.update);
 
