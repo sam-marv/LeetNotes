@@ -12,6 +12,7 @@ const PrevEditor = (props) => {
 
   const putPage = async (data, userid, id) => {
     console.log(data)
+    console.log(userid)
     try {
         console.log("ok")
         
@@ -24,7 +25,7 @@ const PrevEditor = (props) => {
         onChange: async () => {
           let content = await editor.saver.save();
           console.log(content);
-          savePage(pageId,content, (userid || id));
+          savePage(content,pageId.current, userid);
         },
         tools: {
           header: Header,
@@ -41,22 +42,25 @@ const PrevEditor = (props) => {
     }
   };
 
-//   const savePage = async (content) => {
-//     try {
-//       const response = await fetch(`http://localhost:3000/api/pages`, {
-//         method: 'PATCH',
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify({ page_id: pageId, content, user_id : userid }),
-//       });
+  const savePage = async (content) => {
+    console.log(pageId.current);
+    ;
+    try {
+      const response = await fetch(`http://localhost:3000/api/pages`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({  content, page_id: (pageId.current || 4), user_id: 3 }),
+      });
 
-//       const data = await response.json();
-//       console.log('Page saved:', data);
-//     } catch (error) {
-//       console.error('Error saving page:', error);
-//     }
-//   };
+      const data = await response.json();
+      console.log(pageId.current);
+      console.log('Page saved:', data);
+    } catch (error) {
+      console.error('Error saving page:', error);
+    }
+  };
 
   useEffect(() => {
     if (!ejInstance.current) {

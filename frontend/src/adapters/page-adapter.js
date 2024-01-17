@@ -8,14 +8,14 @@ export const getAllPages = async (id) => {
   return pages || [];
 };
 
-export const savePage = async (pageId, content, userId) => {
+export const savePage = async (content, pageId, userId) => {
   try {
     const response = await fetch(`http://localhost:3000/api/pages`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ page_id: pageId, content, user_id : userId }),
+      body: JSON.stringify({ content, page_id: pageId, user_id: userId }),
     });
 
     const data = await response.json();
