@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
-export default function SearchBar() {
+export default function SearchBar({ changeHandler }) {
   return (
     <Box
       sx={{
@@ -11,7 +11,7 @@ export default function SearchBar() {
         borderRadius: '9px',
       }}
     >
-      <TextField fullWidth />
+      <TextField fullWidth onChange={changeHandler} />
     </Box>
   );
 }
