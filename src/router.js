@@ -3,6 +3,7 @@ const userController = require('./controllers/user/index'); // the "/index" part
 
 const pageController = require('./controllers/page');
 const tagController = require('./controllers/tag');
+const leetcodeController = require('./controllers/leetcode');
 const addModelsToRequest = require('./middleware/add-models-to-request');
 const checkAuthentication = require('./middleware/check-authentication');
 
@@ -25,6 +26,9 @@ Router.patch("/pages", pageController.update);
 // Tags routes
 Router.get('/tags', tagController.list);
 Router.post('/tags', tagController.create);
+
+// Leetcode routes
+Router.get("/leetcodes", leetcodeController.list50)
 
 // These actions require authentication (only valid logged in users can do these things)
 // The checkAuthentication middleware will only run for these specified routes.
