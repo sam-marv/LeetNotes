@@ -1,7 +1,13 @@
+import { useState } from 'react';
+import Paginations from '../components/Paginations';
 import SearchBar from '../components/SearchBar';
 import './styles/leetcodes.css';
 
 export default function LeetCodes() {
+  const [page, setPage] = useState(6);
+  const [prev, setPrev] = useState(0);
+  const [idx, setIdx] = useState(0);
+
   const arr = [
     {
       leetcode_id: 1,
@@ -31,7 +37,162 @@ export default function LeetCodes() {
       acrate: '45%',
       ispaid: false,
     },
+    {
+      leetcode_id: 5,
+      title: 'twosum',
+      difficulty: 'Medium',
+      acrate: '45%',
+      ispaid: false,
+    },
+    {
+      leetcode_id: 6,
+      title: 'twosum',
+      difficulty: 'Easy',
+      acrate: '45%',
+      ispaid: false,
+    },
+    {
+      leetcode_id: 7,
+      title: 'twosum',
+      difficulty: 'Hard',
+      acrate: '45%',
+      ispaid: false,
+    },
+    {
+      leetcode_id: 8,
+      title: 'twosum',
+      difficulty: 'Easy',
+      acrate: '45%',
+      ispaid: true,
+    },
+    {
+      leetcode_id: 9,
+      title: 'twosum',
+      difficulty: 'Medium',
+      acrate: '45%',
+      ispaid: false,
+    },
+    {
+      leetcode_id: 10,
+      title: 'twosum',
+      difficulty: 'Easy',
+      acrate: '45%',
+      ispaid: false,
+    },
+    {
+      leetcode_id: 11,
+      title: 'twosum',
+      difficulty: 'Hard',
+      acrate: '45%',
+      ispaid: false,
+    },
+    {
+      leetcode_id: 12,
+      title: 'twosum',
+      difficulty: 'Easy',
+      acrate: '45%',
+      ispaid: true,
+    },
+    {
+      leetcode_id: 13,
+      title: 'twosum',
+      difficulty: 'Easy',
+      acrate: '45%',
+      ispaid: false,
+    },
+    {
+      leetcode_id: 14,
+      title: 'twosum',
+      difficulty: 'Hard',
+      acrate: '45%',
+      ispaid: false,
+    },
+    {
+      leetcode_id: 15,
+      title: 'twosum',
+      difficulty: 'Easy',
+      acrate: '45%',
+      ispaid: true,
+    },
+    {
+      leetcode_id: 16,
+      title: 'twosum',
+      difficulty: 'Medium',
+      acrate: '45%',
+      ispaid: false,
+    },
+    {
+      leetcode_id: 17,
+      title: 'twosum',
+      difficulty: 'Easy',
+      acrate: '45%',
+      ispaid: false,
+    },
+    {
+      leetcode_id: 18,
+      title: 'twosum',
+      difficulty: 'Hard',
+      acrate: '45%',
+      ispaid: false,
+    },
+    {
+      leetcode_id: 19,
+      title: 'twosum',
+      difficulty: 'Easy',
+      acrate: '45%',
+      ispaid: true,
+    },
+    {
+      leetcode_id: 20,
+      title: 'twosum',
+      difficulty: 'Easy',
+      acrate: '45%',
+      ispaid: false,
+    },
+    {
+      leetcode_id: 21,
+      title: 'twosum',
+      difficulty: 'Hard',
+      acrate: '45%',
+      ispaid: false,
+    },
+    {
+      leetcode_id: 22,
+      title: 'twosum',
+      difficulty: 'Easy',
+      acrate: '45%',
+      ispaid: true,
+    },
+    {
+      leetcode_id: 23,
+      title: 'twosum',
+      difficulty: 'Medium',
+      acrate: '45%',
+      ispaid: false,
+    },
+    {
+      leetcode_id: 24,
+      title: 'twosum',
+      difficulty: 'Easy',
+      acrate: '45%',
+      ispaid: false,
+    },
   ];
+
+  const handlePag = (event, value) => {
+    // setIdx(value);
+
+    // if (value > idx) {
+    //   setPrev(page);
+    //   setPage(page + 6);
+    // } else {
+    //   setPrev(page - 12);
+    //   setPage(page - 6);
+    // }
+    // setPrev(6 * value - 1 + 1);
+    setPrev((value - 1) * 6);
+    setPage(value * 6);
+  };
 
   return (
     <>
@@ -41,6 +202,7 @@ export default function LeetCodes() {
         <SearchBar />
       </section>
       <section className="container">
+        {page}
         <ul>
           <li className="none">
             <p>LeetCode #</p>
@@ -49,7 +211,7 @@ export default function LeetCodes() {
             <p>Acceptance Rate</p>
             <p>Subscription Tier</p>
           </li>
-          {arr.map((lc) => (
+          {arr.slice(prev, page).map((lc) => (
             <li
               className={lc.leetcode_id % 2 === 1 ? 'grey' : 'dark'}
               key={lc.leetcode_id}
@@ -62,6 +224,9 @@ export default function LeetCodes() {
             </li>
           ))}
         </ul>
+      </section>
+      <section className="pag">
+        <Paginations handleChange={handlePag} />
       </section>
     </>
   );
