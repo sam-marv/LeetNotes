@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react';
+import Alert from '@mui/joy/Alert';
 import { useNavigate, Navigate } from 'react-router-dom';
 import { logUserIn } from '../adapters/auth-adapter';
 import CurrentUserContext from '../contexts/current-user-context';
@@ -15,7 +16,7 @@ export default function LoginPage() {
     setErrorText('');
     const formData = new FormData(event.target);
     const [user, error] = await logUserIn(Object.fromEntries(formData));
-    if (error) return setErrorText(error.message);
+    if (error) return setErrorText("User doesn't exist");
     setCurrentUser(user);
     navigate(`/users/${user.id}`);
   };
@@ -30,7 +31,8 @@ export default function LoginPage() {
         type={'Log'}
         condition={'Dont Have an Account? Sign Up!'}
       />
-      {!!errorText && <p>{errorText}</p>}
+
+      {!!errorText && <Alert color="danger">{errorText}</Alert>}
     </>
   );
 }

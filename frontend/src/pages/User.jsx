@@ -64,6 +64,7 @@ export default function UserPage() {
 
   return (
     <>
+      <h1>Your Notes</h1>
       <button onClick={handleEditorButtonClick}>
         {true ? 'init editor' : 'Show Editor'}
       </button>
@@ -74,7 +75,7 @@ export default function UserPage() {
         {prevNotes.map((note) => (
           <li
             className="pages"
-            key={note.title}
+            key={note.page_id}
             onClick={() => handleNoteButtonClick(note.page_id)}
           >
             <p>{note.title}</p>

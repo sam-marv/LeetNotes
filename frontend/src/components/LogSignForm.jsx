@@ -75,7 +75,7 @@ export default function LogSignForm({
           </Button>
           <Grid container>
             <Grid item>
-              <Link style={{ fontSize: '15px' }} to={link}>
+              <Link style={{ fontSize: '15px', color: 'blue' }} to={link}>
                 {condition}
               </Link>
             </Grid>
