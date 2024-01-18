@@ -13,12 +13,6 @@ class Page {
     const { rows } = await knex.raw(query, args);
     return rows || [];
   }
-  static async getPage(page_id) {
-    const query = 'SELECT * FROM pages WHERE page_id = ?;';
-    const args = [page_id];
-    const { rows } = await knex.raw(query, args);
-    return rows || [];
-  }
   static async testlist() {
     const query = 'SELECT * FROM pages';
     const { rows } = await knex.raw(query);
@@ -28,7 +22,7 @@ class Page {
   static async create(title, content, user_id) {
     try {
       const query = `INSERT INTO pages (title, content, user_id)
-      VALUES (?, ?, ?) RETURNING page_id`;
+    VALUES (?, ?, ?) RETURNING page_id`;
       const args = [title, content, user_id];
       console.log(args);
       const { rows } = await knex.raw(query, args);
