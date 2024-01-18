@@ -64,12 +64,6 @@ export default function UserPage() {
 
   return (
     <>
-      <h1>{profileUsername}</h1>
-      <p>If the user had any data, here it would be</p>
-      <p>Fake Bio or something</p>
-      <p>yeh</p>
-      <p>Thats that</p>
-
       <button onClick={handleEditorButtonClick}>
         {true ? 'init editor' : 'Show Editor'}
       </button>
@@ -85,8 +79,6 @@ export default function UserPage() {
             onClick={() => handleNoteButtonClick(note.page_id)}
           >
             <p>{note.title}</p>
-            <p>{note.content.difficulty}</p>
-            <p>{note.content.acrate}</p>
           </li>
         ))}
       </ul>

@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import { useNavigate, Navigate, Link } from 'react-router-dom';
 import CurrentUserContext from '../contexts/current-user-context';
 import { createUser } from '../adapters/user-adapter';
+import LogSignForm from '../components/LogSignForm';
 
 // Controlling the sign up form is a good idea because we want to add (eventually)
 // more validation and provide real time feedback to the user about usernames and passwords
@@ -38,43 +39,19 @@ export default function SignUpPage() {
 
   return (
     <>
-      <form
-        onSubmit={handleSubmit}
+      <LogSignForm
+        handleSubmit={handleSubmit}
+        link={'/login'}
+        type={'Sign'}
+        condition={'Already have an account? Log in!'}
         onChange={handleChange}
-        aria-labelledby="create-heading"
-      >
-        <h2 id="create-heading">Create New User</h2>
-        <label htmlFor="username">Username</label>
-        <input
-          autoComplete="off"
-          type="text"
-          id="username"
-          name="username"
-          onChange={handleChange}
-          value={username}
-        />
-
-        <label htmlFor="password">Password</label>
-        <input
-          autoComplete="off"
-          type="password"
-          id="password"
-          name="password"
-          onChange={handleChange}
-          value={password}
-        />
-
-        {/* In reality, we'd want a LOT more validation on signup, so add more things if you have time
+      />
+      {/* In reality, we'd want a LOT more validation on signup, so add more things if you have time
         <label htmlFor="password-confirm">Password Confirm</label>
         <input autoComplete="off" type="password" id="password-confirm" name="passwordConfirm" />
       */}
 
-        <button>Sign Up Now!</button>
-      </form>
       {!!errorText && <p>{errorText}</p>}
-      <p>
-        Already have an account with us? <Link to="/login">Log in!</Link>
-      </p>
     </>
   );
 }

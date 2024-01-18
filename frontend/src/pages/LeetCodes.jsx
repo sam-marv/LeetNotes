@@ -60,8 +60,6 @@ export default function LeetCodes() {
     return title;
   };
 
-  // { title, content, user_id }
-
   const createSection = (lc) => {
     createPage({ title: lc.title, content: lc, user_id: currentUser.id });
   };

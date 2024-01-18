@@ -40,7 +40,7 @@ nav a {
   color: #fff;
 }
 
-form {
+/* form {
   padding: 1rem;
   border: 1px solid #ccc;
   width: 15rem;
@@ -48,7 +48,7 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+} */
 
 /* automatically added by NavLink component */
 .active {

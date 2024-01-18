@@ -31,7 +31,7 @@ class Page {
   static async create(title, content, user_id) {
     try {
       const query = `INSERT INTO pages (title, content, user_id)
-    VALUES (?, ?, ?) RETURNING page_id`;
+      VALUES (?, ?, ?) RETURNING page_id`;
       const args = [title, content, user_id];
       console.log(args);
       const { rows } = await knex.raw(query, args);
