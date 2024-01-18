@@ -74,6 +74,21 @@ const PrevEditor = (props) => {
     };
   }, []);
 
+  useEffect(() => {
+    if (!ejInstance.current) {
+      putPage(data, userid, id);
+    }
+    // else {
+    //     ejInstance?.current?.destroy();
+    //     ejInstance.current = null;
+    // }
+
+    return () => {
+      ejInstance?.current?.destroy();
+      ejInstance.current = null;
+    };
+  }, [data]);
+
   return <div id="PrevEditorjs"></div>;
 };
 
