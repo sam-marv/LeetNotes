@@ -9,10 +9,12 @@ const PrevEditor = (props) => {
   const beenid = id;
   const ejInstance = useRef();
   const [initialData, setInitialData] = useState(null);
+  const [editorOpen, setEditorOpen] = useState(true);
 
   const putPage = async (data, userid, id) => {
     console.log(data);
     // console.log(beenid)
+    setEditorOpen(true)
 
     try {
       console.log('ok');
@@ -88,8 +90,20 @@ const PrevEditor = (props) => {
       ejInstance.current = null;
     };
   }, [data]);
+  const destroyEditor = () => {
+    if (ejInstance.current) {
+      ejInstance.current.destroy();
+      ejInstance.current = null;
+      setEditorOpen(false);
+    }
+  };
 
-  return <div id="PrevEditorjs"></div>;
+  
+  return (<>
+  { editorOpen && <h2 onClick={destroyEditor}>X</h2>}
+  <div id="PrevEditorjs">
+    
+    </div></>);
 };
 
 export default PrevEditor;
