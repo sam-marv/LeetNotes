@@ -30,5 +30,5 @@ export const savePage = async (content, pageId, userId) => {
 };
 
 export const createPage = async ({ title, content, user_id }) => {
-  fetchHandler(baseUrl, getPostOptions({ title, content, user_id }));
+  fetchHandler('/api/pages', getPostOptions({ title, content, user_id }));
 };

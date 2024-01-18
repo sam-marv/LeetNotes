@@ -6,6 +6,7 @@ import { getAllPages, getAPage } from '../adapters/page-adapter';
 import UpdateUsernameForm from '../components/UpdateUsernameForm';
 import Editor from '../components/Editor';
 import PrevEditor from '../components/PrevEditor';
+import './styles/user.css';
 
 export default function UserPage() {
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
@@ -75,7 +76,20 @@ export default function UserPage() {
 
       {isEditorInitialized && <Editor />}
 
-      {prevNotes.map((note) => (
+      <ul className="ule">
+        {prevNotes.map((note) => (
+          <li
+            className="pages"
+            key={note.title}
+            onClick={() => handleNoteButtonClick(note.page_id)}
+          >
+            <p>{note.title}</p>
+            <p>{note.content.difficulty}</p>
+            <p>{note.content.acrate}</p>
+          </li>
+        ))}
+      </ul>
+      {/* {prevNotes.map((note) => (
         <button
           key={note.page_id}
           style={{ display: 'block', marginTop: '10px' }}
@@ -83,7 +97,7 @@ export default function UserPage() {
         >
           {note.title + note.page_id}
         </button>
-      ))}
+      ))} */}
 
       {selectedNote && (
         <PrevEditor id={selectedNote.page_id} data={selectedNote} userid={id} />
