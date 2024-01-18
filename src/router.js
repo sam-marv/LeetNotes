@@ -15,7 +15,6 @@ Router.post('/users', userController.create);
 Router.get('/users/:id/pages', pageController.list);
 Router.get('/users/:id', userController.show);
 
-
 Router.post('/login', userController.login);
 Router.delete('/logout', userController.logout);
 Router.get('/me', userController.showMe);
@@ -23,7 +22,7 @@ Router.get('/me', userController.showMe);
 // Pages Routes
 // Router.get('users/pages/:userid', pageController.list);
 Router.post('/pages', pageController.create);
-Router.patch("/pages", pageController.update);
+Router.patch('/pages', pageController.update);
 Router.get('/pages/:pageid', pageController.getPage);
 
 // Tags routes
@@ -31,7 +30,7 @@ Router.get('/tags', tagController.list);
 Router.post('/tags', tagController.create);
 
 // Leetcode routes
-Router.get("/leetcodes", leetcodeController.list50)
+Router.get('/leetcodes', leetcodeController.list50);
 
 // These actions require authentication (only valid logged in users can do these things)
 // The checkAuthentication middleware will only run for these specified routes.
