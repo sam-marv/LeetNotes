@@ -29,12 +29,6 @@ export default function UserPage() {
     console.log(page);
   };
 
-  const handleNoteButtonClick = async (id) => {
-    let page = await getAPage(id);
-    setSelectedNote(page[0]);
-    console.log(page);
-  };
-
   const { id } = useParams();
   const isCurrentUserProfile = currentUser && currentUser.id === Number(id);
 
@@ -74,24 +68,13 @@ export default function UserPage() {
       <p>Fake Bio or something</p>
       <p>yeh</p>
       <p>Thats that</p>
+
       <button onClick={handleEditorButtonClick}>
         {true ? 'init editor' : 'Show Editor'}
       </button>
+
       {isEditorInitialized && <Editor />}
-      {prevNotes.map((note) => (
-        <button
-          key={note.page_id}
-          style={{ display: 'block', marginTop: '10px' }}
-          onClick={() => handleNoteButtonClick(note.page_id)}
-        >
-          {note.title + note.page_id}
-        </button>
-      ))}
-      {selectedNote && (
-        <PrevEditor id={selectedNote.page_id} data={selectedNote} userid={id} />
-      )}
-      {/* {prevNotes.map((note)=> {
-         return (<button key= {note.page_id} style={{display : "block", marginTop : "10px"}}>{note.title + note.page_id}</button> )
+
       {prevNotes.map((note) => (
         <button
           key={note.page_id}
@@ -109,8 +92,7 @@ export default function UserPage() {
       {/* {prevNotes.map((note)=> {
          return (<button key= {note.page_id} style={{display : "block", marginTop : "10px"}}>{note.title + note.page_id}</button> )
       })}
-       { prevNotes.length > 0 && <PrevEditor id = { prevNotes[0].page_id} data = {  prevNotes[0] } userid = { id} />} */}{' '}
-      */}
+       { prevNotes.length > 0 && <PrevEditor id = { prevNotes[0].page_id} data = {  prevNotes[0] } userid = { id} />} */}
       {/* {!!isCurrentUserProfile && (
         <UpdateUsernameForm
           currentUser={currentUser}
@@ -120,7 +102,6 @@ export default function UserPage() {
     </>
   );
 }
-
 // import { useContext, useEffect, useState } from 'react';
 // import { useParams } from 'react-router-dom';
 // import CurrentUserContext from '../contexts/current-user-context';
