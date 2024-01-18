@@ -35,9 +35,14 @@ nav ul {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+  color: #000;
+}
+
 nav a {
   display: block;
-  color: #fff;
+  /* color: #fff; */
 }
 
 /* form {
@@ -52,7 +57,7 @@ nav a {
 
 /* automatically added by NavLink component */
 .active {
-  color: #eebc32;
+  /* color: #eebc32; */
   font-weight: bold;
   font-style: italic;
 }

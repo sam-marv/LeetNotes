@@ -3,6 +3,7 @@ import { useNavigate, Navigate, Link } from 'react-router-dom';
 import CurrentUserContext from '../contexts/current-user-context';
 import { createUser } from '../adapters/user-adapter';
 import LogSignForm from '../components/LogSignForm';
+import Alert from '@mui/joy/Alert';
 
 // Controlling the sign up form is a good idea because we want to add (eventually)
 // more validation and provide real time feedback to the user about usernames and passwords
@@ -51,7 +52,7 @@ export default function SignUpPage() {
         <input autoComplete="off" type="password" id="password-confirm" name="passwordConfirm" />
       */}
 
-      {!!errorText && <p>{errorText}</p>}
+      {!!errorText && <Alert color="danger">{errorText}</Alert>}
     </>
   );
 }
