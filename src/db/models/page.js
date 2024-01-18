@@ -10,12 +10,15 @@ class Page {
   static async getPage(page_id) {
     const query = 'SELECT * FROM pages WHERE page_id = ?;';
     const args = [page_id];
+<<<<<<< HEAD
     const { rows } = await knex.raw(query, args);
     return rows || [];
   }
   static async getPage(page_id) {
     const query = 'SELECT * FROM pages WHERE page_id = ?;'
     const args = [page_id]
+=======
+>>>>>>> 0dcfc2f (j)
     const { rows } = await knex.raw(query, args);
     return rows || [];
   }

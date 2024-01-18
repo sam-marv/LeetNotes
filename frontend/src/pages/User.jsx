@@ -76,6 +76,7 @@ export default function UserPage() {
 
       {isEditorInitialized && <Editor />}
 
+<<<<<<< HEAD
       <ul className="ule">
         {prevNotes.map((note) => (
           <li
@@ -90,6 +91,9 @@ export default function UserPage() {
         ))}
       </ul>
       {/* {prevNotes.map((note) => (
+=======
+      {prevNotes.map((note) => (
+>>>>>>> 0dcfc2f (j)
         <button
           key={note.page_id}
           style={{ display: 'block', marginTop: '10px' }}
@@ -97,7 +101,11 @@ export default function UserPage() {
         >
           {note.title + note.page_id}
         </button>
+<<<<<<< HEAD
       ))} */}
+=======
+      ))}
+>>>>>>> 0dcfc2f (j)
 
       {selectedNote && (
         <PrevEditor id={selectedNote.page_id} data={selectedNote} userid={id} />
