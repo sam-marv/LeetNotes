@@ -1,10 +1,15 @@
-import { useState, useEffect } from 'react';
-import { getLeetcodes } from '../adapters/leetcode-adapter';
+import { useState, useEffect, useContext } from 'react';
+import AddIcon from '@mui/icons-material/Add';
 import Paginations from '../components/Paginations';
 import SearchBar from '../components/SearchBar';
+import { getLeetcodes } from '../adapters/leetcode-adapter';
 import './styles/leetcodes.css';
+import { createPage } from '../adapters/page-adapter';
+import CurrentUserContext from '../contexts/current-user-context';
 
 export default function LeetCodes() {
+  const { currentUser } = useContext(CurrentUserContext);
+
   const [allLeetcodes, setAllLeetcodes] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const [page, setPage] = useState(6);
@@ -47,6 +52,20 @@ export default function LeetCodes() {
     setSearchValue(e.target.value);
   };
 
+  const shortener = (title) => {
+    if (title.length > 20) {
+      const val = `${title.slice(0, 20)}....`;
+      return val;
+    }
+    return title;
+  };
+
+  // { title, content, user_id }
+
+  const createSection = (lc) => {
+    createPage({ title: lc.title, content: lc, user_id: currentUser.id });
+  };
+
   return (
     <>
       <section className="header">
@@ -69,8 +88,15 @@ export default function LeetCodes() {
               className={lc.leetcode_id % 2 === 1 ? 'grey' : 'dark'}
               key={lc.leetcode_id}
             >
+              <button
+                onClick={() => {
+                  createSection(lc);
+                }}
+              >
+                <AddIcon />
+              </button>
               <p>{lc.leetcode_id}</p>
-              <p>{lc.title}</p>
+              <p>{shortener(lc.title)}</p>
               <p className={lc.difficulty}>{lc.difficulty}</p>
               <p>{lc.acrate}</p>
               <p>{lc.ispaid ? 'Premium' : 'Free'}</p>
