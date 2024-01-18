@@ -9,11 +9,20 @@ const PrevEditor = (props) => {
   const beenid = id;
   const ejInstance = useRef();
   const [initialData, setInitialData] = useState(null);
+<<<<<<< HEAD
 
   const putPage = async (data, userid, id) => {
     console.log(data);
     // console.log(beenid)
 
+=======
+  const [pageId, setPageId] = useState(id); 
+
+  const putPage = async (data, userid, id) => {
+    console.log(data)
+    console.log(beenid)
+    setPageId(id)
+>>>>>>> parent of 0aa4d20 (Removed variables and state not used)
     try {
       console.log('ok');
 
@@ -39,7 +48,7 @@ const PrevEditor = (props) => {
         },
       });
     } catch (error) {
-      console.error('Error making editor: ', error);
+      console.error('Error fetching blocks:', error);
     }
   };
 
@@ -76,12 +85,15 @@ const PrevEditor = (props) => {
 
   useEffect(() => {
     if (!ejInstance.current) {
+<<<<<<< HEAD
+=======
+        setPageId(id)
+>>>>>>> parent of 0aa4d20 (Removed variables and state not used)
       putPage(data, userid, id);
+    }else {
+        ejInstance?.current?.destroy();
+        ejInstance.current = null;
     }
-    // else {
-    //     ejInstance?.current?.destroy();
-    //     ejInstance.current = null;
-    // }
 
     return () => {
       ejInstance?.current?.destroy();
