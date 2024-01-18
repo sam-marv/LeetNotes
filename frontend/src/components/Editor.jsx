@@ -2,13 +2,15 @@ import React, { useEffect, useRef, useState } from "react";
 import EditorJS from "@editorjs/editorjs";
 import Header from "@editorjs/header";
 import List from "@editorjs/list";
+import Table from '@editorjs/table'
 
 
 
 const Editor = () => {
   const ejInstance = useRef();
   const pageId = useRef(null); 
-  const idpage = useRef(4); 
+  const idpage = useRef(4);
+  const [editorOpen, setEditorOpen] = useState(true);
 
   const initEditor = async () => {
     await createNewPage();
@@ -27,6 +29,15 @@ const Editor = () => {
       tools: {
         header: Header,
         list: List,
+        table: {
+            class: Table,
+            inlineToolbar: true,
+            config: {
+              withHeadings: true,
+              rows: 2,
+              cols: 2,
+            },
+          },
       },
     });
   };
@@ -84,6 +95,7 @@ const Editor = () => {
       console.error('Error saving page:', error);
     }
   };
+  
 
   useEffect(() => {
     console.log(ejInstance.current)
@@ -97,8 +109,17 @@ const Editor = () => {
     };
   }, []);
 
+  const destroyEditor = () => {
+    if (ejInstance.current) {
+      ejInstance.current.destroy();
+      ejInstance.current = null;
+      setEditorOpen(false);
+    }
+  };
+
   return (
     <>
+      { editorOpen && <h2 onClick={destroyEditor}>X</h2>}
       <div id='editorjs'></div>
       {console.log("ok")}
     </>

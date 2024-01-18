@@ -74,10 +74,10 @@ export default function UserPage() {
         {prevNotes.map((note) => (
           <li
             className="pages"
-            key={note.title}
+            key={note.title + "id:" + note.page_id}
             onClick={() => handleNoteButtonClick(note.page_id)}
           >
-            <p>{note.title}</p>
+            <p>{note.title + "id:" + note.page_id}</p>
           </li>
         ))}
       </ul>

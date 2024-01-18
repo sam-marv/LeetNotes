@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import EditorJS from '@editorjs/editorjs';
 import Header from '@editorjs/header';
 import List from '@editorjs/list';
+import Table from '@editorjs/table'
 import { savePage } from '../adapters/page-adapter';
 
 const PrevEditor = (props) => {
@@ -33,6 +34,15 @@ const PrevEditor = (props) => {
         tools: {
           header: Header,
           list: List,
+          table: {
+            class: Table,
+            inlineToolbar: true,
+            config: {
+              withHeadings: true,
+              rows: 2,
+              cols: 2,
+            },
+          },
         },
 
         data: {
