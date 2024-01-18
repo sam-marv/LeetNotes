@@ -3,6 +3,7 @@ import EditorJS from '@editorjs/editorjs';
 import Header from '@editorjs/header';
 import List from '@editorjs/list';
 import Table from '@editorjs/table'
+import Checklist from '@editorjs/checklist'
 import { savePage } from '../adapters/page-adapter';
 
 const PrevEditor = (props) => {
@@ -43,6 +44,7 @@ const PrevEditor = (props) => {
               cols: 2,
             },
           },
+          checklist: Checklist,
         },
 
         data: {
