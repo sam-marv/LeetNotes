@@ -3,10 +3,11 @@ import EditorJS from "@editorjs/editorjs";
 import Header from "@editorjs/header";
 import List from "@editorjs/list";
 import Table from '@editorjs/table'
+import './styles/editor.css';
 
 
 
-const Editor = () => {
+const Editor = ({handleEditorButtonClick}) => {
   const ejInstance = useRef();
   const pageId = useRef(null); 
   const idpage = useRef(4);
@@ -114,15 +115,18 @@ const Editor = () => {
       ejInstance.current.destroy();
       ejInstance.current = null;
       setEditorOpen(false);
+      handleEditorButtonClick()
     }
   };
 
   return (
-    <>
-      { editorOpen && <h2 onClick={destroyEditor}>X</h2>}
+    <div className="popup">
+        <div className="popup-content">
+        { editorOpen && <h2 onClick={destroyEditor}>X</h2>}
       <div id='editorjs'></div>
-      {console.log("ok")}
-    </>
+      
+    </div>
+    </div>
   );
 };
 
