@@ -16,10 +16,13 @@ export default function UserPage() {
   const [isNeedRerender, setIsNeedRerendered] = useState(false);
   const [prevNotes, setPrevNotes] = useState([]);
   const [selectedNote, setSelectedNote] = useState(null);
+  const [openModal, setOpenModal] = useState(false);
 
   const handleEditorButtonClick = () => {
     if (!isEditorInitialized) {
       setIsEditorInitialized(true);
+    } else {
+      setIsEditorInitialized(false);
     }
     // setIsEditorVisible(!isEditorVisible);
   };
@@ -69,16 +72,20 @@ export default function UserPage() {
         {true ? 'init editor' : 'Show Editor'}
       </button>
 
-      {isEditorInitialized && <Editor />}
+      {isEditorInitialized && (
+        <div className="container max-w-4xl">
+          <Editor handleEditorButtonClick={handleEditorButtonClick} />
+        </div>
+      )}
 
       <ul className="ule">
         {prevNotes.map((note) => (
           <li
             className="pages"
-            key={note.page_id}
+            key={note.title + 'id:' + note.page_id}
             onClick={() => handleNoteButtonClick(note.page_id)}
           >
-            <p>{note.title}</p>
+            <p>{note.title + 'id:' + note.page_id}</p>
           </li>
         ))}
       </ul>

@@ -1,0 +1,51 @@
+.popup {
+    z-index: 1000; 
+}
+.codex-editor {
+    width: 940px;
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 60vh; 
+    overflow-y: auto; 
+}
+
+.codex-editor__redactor {
+    transform: translateX(-30px);
+}
+.ce-toolbar {
+    transform: translateX(-90px);
+}
+
+.popup-content {
+    position: fixed;
+    top: 40%;
+    left : 60%;
+    transform: translate(-50%, -50%);
+
+    border-radius: 8px;
+    z-index: 1001;
+}
+
+#editorjs {
+    background: white;
+}
+#editorjs .codex-editor--narrow .ce-toolbar__actions {
+    left : -15px
+  }
+
+
+
+
+
+
+.codex-editor--narrow .ce-toolbar__actions {
+    left : -30px
+}
+.codex-editor--narrow .ce-toolbox .ce-popover {
+    left: -30px;
+    
+}
+
+
+
+

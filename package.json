@@ -22,9 +22,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@editorjs/checklist": "^1.6.0",
     "@editorjs/editorjs": "^2.28.2",
     "@editorjs/header": "^2.8.1",
     "@editorjs/list": "^1.9.0",
+    "@editorjs/table": "^2.3.0",
     "bcrypt": "^5.1.0",
     "connect-session-knex": "^3.0.1",
     "cookie-parser": "^1.4.6",
