@@ -43,7 +43,7 @@ export default function SignUpPage() {
       <LogSignForm
         handleSubmit={handleSubmit}
         link={'/login'}
-        type={'Sign'}
+        type={'Sign Up'}
         condition={'Already have an account? Log in!'}
         onChange={handleChange}
       />

@@ -28,8 +28,8 @@ export default function LoginPage() {
       <LogSignForm
         handleSubmit={handleSubmit}
         link={'/sign-up'}
-        type={'Log'}
-        condition={'Dont Have an Account? Sign Up!'}
+        type={'Log In'}
+        condition={"Don't Have an Account? Sign Up!"}
       />
 
       {!!errorText && <Alert color="danger">{errorText}</Alert>}
