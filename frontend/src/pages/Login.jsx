@@ -16,7 +16,13 @@ export default function LoginPage() {
     setErrorText('');
     const formData = new FormData(event.target);
     const [user, error] = await logUserIn(Object.fromEntries(formData));
-    if (error) return setErrorText("User doesn't exist");
+    if (error) {
+      setErrorText("User doesn't exist");
+      setTimeout(() => {
+        setErrorText('');
+      }, 5000);
+      return;
+    }
     setCurrentUser(user);
     navigate(`/users/${user.id}`);
   };
@@ -32,7 +38,14 @@ export default function LoginPage() {
         condition={"Don't Have an Account? Sign Up!"}
       />
 
-      {!!errorText && <Alert color="danger">{errorText}</Alert>}
+      <br></br>
+      <br></br>
+
+      {!!errorText && (
+        <Alert variant="solid" color="danger">
+          {errorText}
+        </Alert>
+      )}
     </>
   );
 }

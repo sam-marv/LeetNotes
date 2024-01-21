@@ -3,6 +3,10 @@ body {
   margin: 0;
 }
 
+html {
+  background-color: rgb(26, 26, 26);
+}
+
 input,
 label {
   display: block;
@@ -61,4 +65,3 @@ nav a {
   font-weight: bold;
   font-style: italic;
 }
-

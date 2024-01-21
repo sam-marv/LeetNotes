@@ -22,11 +22,22 @@ export default function SignUpPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setErrorText('');
-    if (!username || !password)
-      return setErrorText('Missing username or password');
+    if (!username || !password) {
+      setErrorText('Missing username or password');
+      setTimeout(() => {
+        setErrorText('');
+      }, 5000);
+      return;
+    }
 
     const [user, error] = await createUser({ username, password });
-    if (error) return setErrorText(error.message);
+    if (error) {
+      setErrorText(error.message);
+      setTimeout(() => {
+        setErrorText('');
+      }, 5000);
+      return;
+    }
 
     setCurrentUser(user);
     navigate('/');
@@ -52,7 +63,11 @@ export default function SignUpPage() {
         <input autoComplete="off" type="password" id="password-confirm" name="passwordConfirm" />
       */}
 
-      {!!errorText && <Alert color="danger">{errorText}</Alert>}
+      {!!errorText && (
+        <Alert variant="solid" color="danger">
+          {errorText}
+        </Alert>
+      )}
     </>
   );
 }

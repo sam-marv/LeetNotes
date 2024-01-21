@@ -2,6 +2,11 @@ h1 {
   text-align: center;
 }
 
+main {
+  background-color: #1a1a1a;
+  color: aliceblue;
+}
+
 .pages {
   border: 1px solid rgb(175, 172, 172);
   background-color: lightblue;

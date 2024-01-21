@@ -39,21 +39,19 @@ export default function SidebarLinks() {
   // }
 
   return (
-    <List>
+    <List sx={{ bgcolor: '#282828', color: 'aliceblue' }}>
       <NavLink to="/">
         <ListItem>
           <ListItemButton
             sx={{
+              color: '#282828',
               borderRadius: '12px',
-              backgroundColor:
-                selected === probIndex
-                  ? 'rgba(17, 150, 206, 0.3)'
-                  : 'rgba(17, 150, 206, 0.8)',
+              backgroundColor: selected === probIndex ? '#fce14b' : '#fda116',
               ':hover': {
-                backgroundColor: 'lightblue',
+                backgroundColor: '#fce14b',
               },
               '&:active': {
-                backgroundColor: 'rgba(17, 150, 206, 0.3)',
+                backgroundColor: '#fce14b',
               },
             }}
             onClick={() => handleItemClick(probIndex)}
@@ -72,16 +70,15 @@ export default function SidebarLinks() {
             <ListItem>
               <ListItemButton
                 sx={{
+                  color: '#282828',
                   borderRadius: '12px',
                   backgroundColor:
-                    selected === savedIndex
-                      ? 'rgba(17, 150, 206, 0.3)'
-                      : 'rgba(17, 150, 206, 0.8)',
+                    selected === savedIndex ? '#fce14b' : '#fda116',
                   ':hover': {
-                    backgroundColor: 'lightblue',
+                    backgroundColor: '#fce14b',
                   },
                   '&:active': {
-                    backgroundColor: 'rgba(17, 150, 206, 0.3)',
+                    backgroundColor: '#fce14b',
                   },
                 }}
                 onClick={() => handleItemClick(savedIndex)}
@@ -96,13 +93,14 @@ export default function SidebarLinks() {
           </NavLink>
           <ListItemButton
             sx={{
+              color: '#282828',
               borderRadius: '12px',
               width: '70%',
               margin: '20px auto',
               textAlign: 'center',
-              backgroundColor: 'rgba(17, 150, 206, 0.8)',
+              backgroundColor: '#fda116',
               ':hover': {
-                backgroundColor: 'rgba(17, 150, 206, 0.3)',
+                backgroundColor: '#fce14b',
               },
             }}
             onClick={handleClick}
@@ -117,16 +115,14 @@ export default function SidebarLinks() {
               <ListItem key={text}>
                 <ListItemButton
                   sx={{
+                    color: '#282828',
                     borderRadius: '12px',
-                    backgroundColor:
-                      selected === index
-                        ? 'rgba(17, 150, 206, 0.3)'
-                        : 'rgba(17, 150, 206, 0.8)',
+                    backgroundColor: selected === index ? '#fce14b' : '#fda116',
                     ':hover': {
-                      backgroundColor: 'lightblue',
+                      backgroundColor: '#fce14b',
                     },
                     '&:active': {
-                      backgroundColor: 'rgba(17, 150, 206, 0.3)',
+                      backgroundColor: '#fce14b',
                     },
                   }}
                   onClick={() => handleItemClick(index)}
