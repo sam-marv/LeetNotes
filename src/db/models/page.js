@@ -13,6 +13,18 @@ class Page {
     const { rows } = await knex.raw(query, args);
     return rows || [];
   }
+  static async getPageByTitle(title, user_id) {
+    try {
+    const query = 'SELECT * FROM pages WHERE title = ? AND user_id = ?;';
+    const args = [title, user_id];
+    const { rows } = await knex.raw(query, args);
+    return rows || [];
+    }
+    catch(err) {
+      console.error(err);
+      return null;
+    }
+  }
   static async testlist() {
     const query = 'SELECT * FROM pages';
     const { rows } = await knex.raw(query);
@@ -28,12 +40,34 @@ class Page {
       const { rows } = await knex.raw(query, args);
       console.log(rows);
       return rows[0].page_id;
-      // return rows[0];
+      
     } catch (err) {
+      if (err.code === '23505' && err.constraint === 'pages_title_unique') {
+        // Handle the unique constraint violation 
+        console.error('Duplicate title. Please choose a different title.');
+        return Page.getPageByTitle(title, user_id)
+        return null;
+      } else {
+        
+        console.error(err);
+        return null;
+      }
+    }
+  }
+  static async getPageByTitle(title, user_id) {
+    try {
+    const query = 'SELECT * FROM pages WHERE title = ? AND user_id = ?;';
+    const args = [title, user_id];
+    const { rows } = await knex.raw(query, args);
+    console.log(rows)
+    return rows || [];
+    }
+    catch(err) {
       console.error(err);
       return null;
     }
   }
+  
   static async update(content, page_id, user_id) {
     try {
       const query =
