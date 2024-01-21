@@ -81,7 +81,7 @@ const PrevEditor = (props) => {
 
   useEffect(() => {
     if (!ejInstance.current) {
-        console.log("booingjhgtjht")
+        // console.log("booingjhgtjht")
       putPage(data, userid, id);
     }
     // else {

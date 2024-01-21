@@ -6,6 +6,7 @@ import { getLeetcodes } from '../adapters/leetcode-adapter';
 import './styles/leetcodes.css';
 import { createPage } from '../adapters/page-adapter';
 import CurrentUserContext from '../contexts/current-user-context';
+import PrevEditor from '../components/PrevEditor';
 import Alert from '@mui/joy/Alert';
 
 export default function LeetCodes() {
@@ -17,6 +18,7 @@ export default function LeetCodes() {
   const [prev, setPrev] = useState(0);
   const [added, setAdded] = useState('');
   const [idx, setIdx] = useState(0);
+  const [selectedNote, setSelectedNote] = useState(null);
   const [query, setQuery] = useState({
     offset: 0,
     difficulty: null,
@@ -62,9 +64,32 @@ export default function LeetCodes() {
     return title;
   };
 
-  const createSection = (lc) => {
-    createPage({ title: lc.title, content: lc, user_id: currentUser.id });
+  const createSection =  async (lc) => {
+    const testresult = await createPage({ title: lc.title, content: lc, user_id: currentUser.id });
+    console.log(testresult)
+    if(testresult[0] === null) console.log("rip")
+    if(Array.isArray(testresult[0])) {
+      console.log("its an array")
+      setSelectedNote(testresult[0][0])
+    
+    }
+    if(typeof testresult[0] === "number"){
+      console.log("cool its a num: " + testresult[0])
 
+      const obj = {
+        CreatedAt: new Date().toISOString(),
+        UpdatedAt: new Date().toISOString(),
+        content: {
+          time : new Date().getTime(),
+          blocks : [],
+          version: "2.28.2"
+        },
+        page_id: testresult[0],
+        title: lc.title,
+        user_id: currentUser.id
+     }
+     setSelectedNote(obj)
+    }
     setAdded('Successfully Added');
     setTimeout(() => {
       setAdded('');
@@ -119,6 +144,9 @@ export default function LeetCodes() {
       <section className="pag">
         <Paginations handleChange={handlePag} />
       </section>
+      {selectedNote && (
+        <PrevEditor id={selectedNote.page_id} data={selectedNote} userid={currentUser.id} />
+      )}
     </>
   );
 }
