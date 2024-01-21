@@ -29,6 +29,9 @@
 #editorjs {
     background: white;
 }
+#PrevEditorjs {
+    background: white;
+}
 #editorjs .codex-editor--narrow .ce-toolbar__actions {
     left : -15px
   }

@@ -103,16 +103,7 @@ export default function UserPage() {
         <PrevEditor id={selectedNote.page_id} data={selectedNote} userid={id} />
       )}
 
-      {/* {prevNotes.map((note)=> {
-         return (<button key= {note.page_id} style={{display : "block", marginTop : "10px"}}>{note.title + note.page_id}</button> )
-      })}
-       { prevNotes.length > 0 && <PrevEditor id = { prevNotes[0].page_id} data = {  prevNotes[0] } userid = { id} />} */}
-      {/* {!!isCurrentUserProfile && (
-        <UpdateUsernameForm
-          currentUser={currentUser}
-          setCurrentUser={setCurrentUser}
-        />
-      )} */}
+
     </main>
   );
 }

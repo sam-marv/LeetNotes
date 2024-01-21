@@ -103,11 +103,13 @@ const PrevEditor = (props) => {
   };
 
   
-  return (<>
-  { editorOpen && <h2 onClick={destroyEditor}>X</h2>}
-  <div id="PrevEditorjs">
-    
-    </div></>);
+  return (    
+  <div className="popup">
+    <div className="popup-content">
+        {editorOpen && <h2 onClick={destroyEditor}>X</h2>}
+        <div id='PrevEditorjs'></div>
+    </div>
+</div>);
 };
 
 export default PrevEditor;
