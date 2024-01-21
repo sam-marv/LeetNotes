@@ -106,7 +106,7 @@ const PrevEditor = (props) => {
   return (    
   <div className="popup">
     <div className="popup-content">
-        {editorOpen && <h2 onClick={destroyEditor}>X</h2>}
+        {editorOpen && <h2 className="X" onClick={destroyEditor}>X</h2>}
         <div id='PrevEditorjs'></div>
     </div>
 </div>);
