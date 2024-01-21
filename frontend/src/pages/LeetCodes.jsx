@@ -6,6 +6,7 @@ import { getLeetcodes } from '../adapters/leetcode-adapter';
 import './styles/leetcodes.css';
 import { createPage } from '../adapters/page-adapter';
 import CurrentUserContext from '../contexts/current-user-context';
+import Alert from '@mui/joy/Alert';
 
 export default function LeetCodes() {
   const { currentUser } = useContext(CurrentUserContext);
@@ -14,6 +15,7 @@ export default function LeetCodes() {
   const [searchValue, setSearchValue] = useState('');
   const [page, setPage] = useState(6);
   const [prev, setPrev] = useState(0);
+  const [added, setAdded] = useState('');
   const [idx, setIdx] = useState(0);
   const [query, setQuery] = useState({
     offset: 0,
@@ -62,42 +64,54 @@ export default function LeetCodes() {
 
   const createSection = (lc) => {
     createPage({ title: lc.title, content: lc, user_id: currentUser.id });
+
+    setAdded('Successfully Added');
+    setTimeout(() => {
+      setAdded('');
+    }, 2500);
   };
 
   return (
     <>
       <section className="header">
         <h1>Leet Code Problems</h1>
-        <p>Search for your LeetCode Here</p>
+        <h3>Search for your LeetCode Here</h3>
         <SearchBar changeHandler={searchHandler} />
       </section>
       <section className="container">
-        {page}
         <ul>
           <li className="none">
-            <p>LeetCode #</p>
+            <p>Save</p>
             <p>Title</p>
             <p>Difficulty</p>
             <p>Acceptance Rate</p>
             <p>Subscription Tier</p>
           </li>
+          <div className="line"></div>
+          {!!added && (
+            <Alert variant="solid" color="success">
+              {added}
+            </Alert>
+          )}
           {allLeetcodes.slice(prev, page).map((lc) => (
             <li
               className={lc.leetcode_id % 2 === 1 ? 'grey' : 'dark'}
               key={lc.leetcode_id}
             >
               <button
+                className="add"
                 onClick={() => {
                   createSection(lc);
                 }}
               >
                 <AddIcon />
               </button>
-              <p>{lc.leetcode_id}</p>
-              <p>{shortener(lc.title)}</p>
-              <p className={lc.difficulty}>{lc.difficulty}</p>
-              <p>{lc.acrate}</p>
-              <p>{lc.ispaid ? 'Premium' : 'Free'}</p>
+              <p className="item sm">
+                {lc.leetcode_id}. {shortener(lc.title)}
+              </p>
+              <p className={`${lc.difficulty} + item`}>{lc.difficulty}</p>
+              <p className="item">{lc.acrate}</p>
+              <p className="item">{lc.ispaid ? 'Premium' : 'Free'}</p>
             </li>
           ))}
         </ul>

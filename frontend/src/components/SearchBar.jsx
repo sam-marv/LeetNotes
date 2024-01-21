@@ -11,7 +11,22 @@ export default function SearchBar({ changeHandler }) {
         borderRadius: '9px',
       }}
     >
-      <TextField fullWidth onChange={changeHandler} />
+      <TextField
+        fullWidth
+        onChange={changeHandler}
+        sx={{
+          border: '1px solid #fda116',
+          borderRadius: '3px',
+          color: 'aliceblue',
+        }}
+        InputProps={{
+          style: {
+            color: 'aliceblue',
+            fontSize: '1rem',
+          },
+        }}
+        color="warning"
+      />
     </Box>
   );
 }

@@ -4,25 +4,38 @@
 
 .container {
   margin: 0 auto;
+  font-size: 16px;
 }
 
 .container ul {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 20px;
+  width: 90%;
+  margin: 0 auto;
+  padding-bottom: 40px;
+}
+
+.none {
+  text-align: left;
 }
 
 .container ul li {
   list-style: none;
-  padding: 10px;
-  border: 1px solid rgb(236, 232, 232);
+  gap: 20px;
+
   border-radius: 5px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+p {
+  width: 70px;
 }
 
 .Easy {
-  color: green;
+  color: rgb(3, 148, 3);
 }
 
 .Medium {
@@ -33,14 +46,34 @@
   color: Red;
 }
 
-.grey {
-  background-color: rgb(236, 232, 232);
+.line {
+  background-color: #3b3b3b;
+  width: 100%;
+  height: 1px;
 }
+
+.add {
+  color: aliceblue;
+  background-color: transparent;
+  border: none;
+  width: 40px;
+}
+
+.add:hover {
+  cursor: pointer;
+}
+
+/* /* .grey {
+  background-color: rgb(236, 232, 232);
+} */
 
 .dark {
-  background-color: rgb(192, 188, 188);
+  background-color: #282828;
 }
-
 .pag {
   margin: 0 auto;
+}
+
+.sm {
+  font-size: 15px;
 }
