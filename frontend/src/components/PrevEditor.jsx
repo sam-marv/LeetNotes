@@ -19,7 +19,7 @@ const PrevEditor = (props) => {
     setEditorOpen(true)
 
     try {
-      console.log('ok');
+      console.log('OK');
 
       const editor = new EditorJS({
         holder: 'PrevEditorjs',
@@ -77,19 +77,11 @@ const PrevEditor = (props) => {
   //     }
   //   };
 
-  useEffect(() => {
-    if (!ejInstance.current) {
-      putPage(data, userid, id);
-    }
 
-    return () => {
-      ejInstance?.current?.destroy();
-      ejInstance.current = null;
-    };
-  }, []);
 
   useEffect(() => {
     if (!ejInstance.current) {
+        console.log("booingjhgtjht")
       putPage(data, userid, id);
     }
     // else {
