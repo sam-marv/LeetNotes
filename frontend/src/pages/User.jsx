@@ -68,9 +68,9 @@ export default function UserPage() {
   return (
     <main>
       <h1>Your Notes</h1>
-      <button onClick={handleEditorButtonClick}>
+      {/* <button onClick={handleEditorButtonClick}>
         {true ? 'init editor' : 'Show Editor'}
-      </button>
+      </button> */}
 
       {isEditorInitialized && (
         <div className="container max-w-4xl">
@@ -82,10 +82,11 @@ export default function UserPage() {
         {prevNotes.map((note) => (
           <li
             className="pages"
-            key={note.title + 'id:' + note.page_id}
+            key={`${note.title}id:${note.page_id}`}
             onClick={() => handleNoteButtonClick(note.page_id)}
           >
-            <p>{note.title + 'id:' + note.page_id}</p>
+            {/* <p>{note.title + 'id:' + note.page_id}</p> */}
+            <p className="saved">{note.title}</p>
           </li>
         ))}
       </ul>
@@ -102,8 +103,6 @@ export default function UserPage() {
       {selectedNote && (
         <PrevEditor id={selectedNote.page_id} data={selectedNote} userid={id} />
       )}
-
-
     </main>
   );
 }
