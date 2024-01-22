@@ -5,7 +5,16 @@ import './styles/pag.css';
 export default function Paginations({ handleChange }) {
   return (
     <Stack spacing={9} alignItems="center">
-      <Pagination count={10} color="warning" onChange={handleChange} />
+      <Pagination
+        count={10}
+        color="warning"
+        onChange={handleChange}
+        sx={{
+          '&:root': {
+            color: 'red',
+          },
+        }}
+      />
     </Stack>
   );
 }
