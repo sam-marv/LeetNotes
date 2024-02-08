@@ -1,23 +1,38 @@
-# LeetCode Manager App
+# LeetNotes
 
-Welcome to LeetCode Manager – your go-to solution for efficiently managing your LeetCode journey! This application allows you to search for LeetCode problems, save them to your personal profile, take notes, and track your progress.
+Welcome to LeetNotes! LeetNotes is a web application designed to help you organize and take notes on LeetCode problems efficiently. Whether you're a seasoned coder or just starting out, LeetNotes provides a convenient platform to manage your problem-solving journey.
+
+## Technologies Used
+
+- JavaScript
+- CSS
+- React
+- Express.js
+- PostgreSQL
+- Knex.js
+- MaterialUI
+- Editor.js
 
 ## Features
 
-1. Problem Search
-   Easily search for LeetCode problems based on keywords. Find the perfect problems to challenge yourself and enhance your coding skills.
+- **Authentication and Authorization:** Users can sign up and log in securely. LeetNotes implements an authentication and authorization system to ensure user data privacy and security.
+  
+- **Problem Catalog:** Explore a comprehensive catalog of LeetCode problems. Our dynamic search and pagination navigator make it easy to find the problems you're interested in.
 
-2. Personal Profile
-   Create and manage your personal profile. Keep track of the problems you've solved and monitor your overall progress.
+- **Personalized Pages:** Save your favorite problems to your personalized pages. This feature allows users to keep track of the problems they're working on or planning to tackle in the future.
 
-3. Notes
-   Take detailed notes on each problem to document your thought process, solutions, and key learnings. Your notes are securely stored and easily accessible whenever you need them.
+- **Note-taking:** Write notes about LeetCode problems directly on your personalized pages. LeetNotes utilizes a text editor similar to Notion, powered by Editor.js, to provide a seamless note-taking experience.
 
-4. Authentication and Authorization
-   Enjoy a secure experience with a full authentication and authorization system. Register for a new account or log in securely to access your personalized LeetCode Manager experience.
+- **Material UI Design:** LeetNotes is designed with MaterialUI to ensure an intuitive and visually appealing user interface.
 
-5. Dynamic Pagination
-   Effortlessly navigate through your problem list with dynamic pagination. Easily switch between pages to view and manage your LeetCode challenges.
+## Contributing
 
-6. Search Feature
-   Quickly locate specific problems using the search feature. Filter and sort your problem list based on various criteria to find exactly what you're looking for.
+We welcome contributions from the community to improve LeetNotes further. Whether you want to report bugs, suggest new features, or contribute code, please feel free to open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+**Note:** LeetNotes is not affiliated with LeetCode. LeetCode is a registered trademark of LeetCode, Inc.
