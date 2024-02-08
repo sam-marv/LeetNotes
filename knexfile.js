@@ -35,9 +35,7 @@ module.exports = {
   },
   production: {
     client: 'pg',
-    connection: {
-      connectionString: process.env.PG_CONNECTION_STRING,
-    },
+    connection: process.env.PG_CONNECTION_STRING,
     migrations: {
       directory: migrationsDirectory,
       stub: migrationsStub,
