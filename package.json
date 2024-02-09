@@ -4,8 +4,8 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "kickstart": "cd frontend && npm i && cd .. && npm i && npm run migrate && npm run seed -- --specific=leetcodes_seed.js && npm run seed -- --specific=leettags.js && npm run seed -- --specific=leettagleetcode.js && npm run dev",
-    "build": "npm i && npm run migrate:rollback && npm run migrate && npm run seed",
+    "kickstart": "cd frontend && npm i && cd .. && npm i && npm run migrate && npm run seed && npm run dev",
+    "build": "npm i && npm run migrate:rollback && npm run migrate && npm run seed -- --specific=leetcodes_seed.js && npm run seed -- --specific=leettags.js && npm run seed -- --specific=leettagleetcode.js",
     "start": "node src/index.js",
     "dev": "nodemon ./src/index.js",
     "console": "node -r ./src/db/models/console.js",
