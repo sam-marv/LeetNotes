@@ -44,7 +44,7 @@ const Editor = ({ handleEditorButtonClick }) => {
 
   const createNewPage = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/pages', {
+      const response = await fetch('/api/pages', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -77,7 +77,7 @@ const Editor = ({ handleEditorButtonClick }) => {
     console.log(pageId.current);
     console.log(idpage.current);
     try {
-      const response = await fetch(`http://localhost:3000/api/pages`, {
+      const response = await fetch(`/api/pages`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
