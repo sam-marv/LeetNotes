@@ -4,7 +4,7 @@ import Paginations from '../components/Paginations';
 import SearchBar from '../components/SearchBar';
 import { getLeetcodes } from '../adapters/leetcode-adapter';
 import './styles/leetcodes.css';
-import { createPage } from '../adapters/page-adapter';
+import { createPage, getAPage, getAllPages } from '../adapters/page-adapter';
 import CurrentUserContext from '../contexts/current-user-context';
 import PrevEditor from '../components/PrevEditor';
 import Alert from '@mui/joy/Alert';
@@ -19,6 +19,7 @@ export default function LeetCodes() {
   const [added, setAdded] = useState('');
   const [idx, setIdx] = useState(0);
   const [selectedNote, setSelectedNote] = useState(null);
+  const [createdNotes, setCreatedNotes]  = useState({})
   const [query, setQuery] = useState({
     offset: 0,
     difficulty: null,
@@ -46,7 +47,30 @@ export default function LeetCodes() {
     };
     setCodes();
   }, [searchValue]);
+  useEffect((() => {
 
+  }), [])
+
+  useEffect(() => {
+    const setNotes = async () => {
+      try {
+        console.log(currentUser)
+        const prevNotes = await getAllPages(currentUser.id);
+        let obj = {}
+        prevNotes.forEach((note) => {
+          obj[note.title] = note.page_id
+        })
+        setCreatedNotes(obj)
+        console.log(prevNotes)
+        console.log(obj);
+      } catch(error){
+        console.log(error)
+      }
+
+
+    };
+    setNotes();
+  }, [currentUser]);
   const handlePag = (event, value) => {
     setPrev((value - 1) * 6);
     setPage(value * 6);
@@ -65,6 +89,7 @@ export default function LeetCodes() {
   };
 
   const createSection =  async (lc) => {
+    if(!(lc.title in createdNotes)){
     const testresult = await createPage({ title: lc.title, content: lc, user_id: currentUser.id });
     console.log(testresult)
     if(testresult[0] === null) console.log("rip")
@@ -89,11 +114,17 @@ export default function LeetCodes() {
         user_id: currentUser.id
      }
      setSelectedNote(obj)
+     setCreatedNotes({...createdNotes, [lc.title]: testresult[0]})
     }
     setAdded('Successfully Added');
     setTimeout(() => {
       setAdded('');
-    }, 2500);
+    }, 2500);}
+    else {
+      const leetpage = await getAPage(createdNotes[lc.title])
+      console.log(leetpage)
+      setSelectedNote(leetpage[0])
+    }
   };
 
   return (

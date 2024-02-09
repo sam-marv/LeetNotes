@@ -80,3 +80,8 @@
 .ce-block--selected .ce-block__content {
   background-color: #f99500;
 }
+
+.tc-popover--opened {
+  color: #fda116;
+  background-color: transparent;
+}

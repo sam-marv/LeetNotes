@@ -4,10 +4,10 @@
  */
 
 exports.up = (knex) =>
-  // eslint-disable-next-line implicit-arrow-linebreak
+  // eslint-disable-next-line implicit-arrow-linebreak //
   knex.schema.createTable('pages', (table) => {
     table.increments('page_id').primary().unique();
-    table.string('title', 100).notNullable().unique();
+    table.string('title', 100).notNullable()
     table.json('content').nullable();
     table.timestamp('CreatedAt').notNullable().defaultTo(knex.fn.now());
     table.timestamp('UpdatedAt').notNullable().defaultTo(knex.fn.now());

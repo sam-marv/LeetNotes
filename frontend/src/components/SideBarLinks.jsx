@@ -31,7 +31,7 @@ export default function SidebarLinks() {
   const handleClick = async () => {
     logUserOut();
     setCurrentUser(null);
-    navigate('/');
+    navigate('/login');
   };
 
   // if (currentUser) {
