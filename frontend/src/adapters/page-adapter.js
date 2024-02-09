@@ -14,7 +14,7 @@ export const getAPage = async (id) => {
 export const savePage = async (content, pageId, userId) => {
   console.log('page id: + ' + pageId, 'user id: +' + userId);
   try {
-    const response = await fetch(`http://localhost:3000/api/pages`, {
+    const response = await fetch(`/api/pages`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -30,5 +30,8 @@ export const savePage = async (content, pageId, userId) => {
 };
 
 export const createPage = async ({ title, content, user_id }) => {
- return fetchHandler('/api/pages', getPostOptions({ title, content, user_id }));
+  return fetchHandler(
+    '/api/pages',
+    getPostOptions({ title, content, user_id })
+  );
 };
