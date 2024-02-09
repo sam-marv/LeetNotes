@@ -1,6 +1,6 @@
 /* eslint-disable */
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 import path from 'path';
 
 // https://vitejs.dev/config/
@@ -10,7 +10,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://0.0.0.0:3000',
+        target: 'https://leetnotes-c0xc.onrender.com/',
         changeOrigin: true,
         secure: false,
         ws: true,
