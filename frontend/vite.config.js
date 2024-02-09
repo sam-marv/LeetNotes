@@ -10,7 +10,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://leetnotes-c0xc.onrender.com/',
+        target: 'http://0.0.0.0:3000',
         changeOrigin: true,
         secure: false,
         ws: true,

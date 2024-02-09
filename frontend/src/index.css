@@ -66,14 +66,8 @@ nav a {
   font-style: italic;
 }
 
-.MuiPaginationItem-root.MuiPaginationItem-sizeMedium.MuiPaginationItem-text.MuiPaginationItem-circular.MuiPaginationItem-textWarning.MuiPaginationItem-ellipsis.css-1v2lvtn-MuiPaginationItem-root {
-  color: aliceblue;
-}
-
-button.MuiButtonBase-root.MuiPaginationItem-root.MuiPaginationItem-sizeMedium.MuiPaginationItem-text.MuiPaginationItem-circular.MuiPaginationItem-textWarning.MuiPaginationItem-page.css-9vsask-MuiButtonBase-root-MuiPaginationItem-root {
-  color: aliceblue;
-}
-
-svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.MuiPaginationItem-icon.css-g2z002-MuiSvgIcon-root-MuiPaginationItem-icon {
-  color: aliceblue;
+.MuiPagination-root {
+  button {
+    color: aliceblue !important;
+  }
 }
